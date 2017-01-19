@@ -7,7 +7,7 @@ Branch names follow convention like `sig-storage<VERSION>-gluster-<GLUSTERFS-VER
 * sig-storage7-gluster-38: CentOS-7, glusterfs-3.8
 * ...
 
-Instructions for building the glusterfs package for the CentOS Storage SIG can be found in the following places:
+Instructions for building the python-glusterfs-api package for the CentOS Storage SIG can be found in the following places:
 
 * [Comunity Build System](https://wiki.centos.org/HowTos/CommunityBuildSystem)
 * [Storage SIG landing page](https://wiki.centos.org/SpecialInterestGroup/Storage/Gluster)
