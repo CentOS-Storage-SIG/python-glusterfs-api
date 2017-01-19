@@ -29,8 +29,8 @@ See http://libgfapi-python.rtfd.io/ for more details.
 %package -n python2-glusterfs-api
 Summary:          Python2 bindings for GlusterFS libgfapi
 %{?python_provide:%python_provide python2-glusterfs-api}
-BuildRequires:    python2-devel
-BuildRequires:    python2-setuptools
+BuildRequires:    python-devel
+BuildRequires:    python-setuptools
 # Requires libgfapi.so
 Requires:         glusterfs-api >= 3.7.0
 # Requires gluster/__init__.py
