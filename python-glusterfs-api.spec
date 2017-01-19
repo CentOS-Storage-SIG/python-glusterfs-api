@@ -31,6 +31,8 @@ Summary:          Python2 bindings for GlusterFS libgfapi
 %{?python_provide:%python_provide python2-glusterfs-api}
 BuildRequires:    python-devel
 BuildRequires:    python-setuptools
+# CentOS 6 does not have __python2
+%{!?__python2: %global __python2 /usr/bin/python2}
 # Requires libgfapi.so
 Requires:         glusterfs-api >= 3.7.0
 # Requires gluster/__init__.py
