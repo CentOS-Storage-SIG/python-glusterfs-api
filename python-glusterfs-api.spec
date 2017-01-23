@@ -12,7 +12,7 @@
 Name:             python-glusterfs-api
 Summary:          Python bindings for GlusterFS libgfapi
 Version:          1.1
-Release:          2%{?dist}
+Release:          2.1%{?dist}
 License:          GPLv2 or LGPLv3+
 Group:            System Environment/Libraries
 URL:              https://github.com/gluster/libgfapi-python
@@ -67,6 +67,9 @@ Requires:         python-gluster >= 3.7.0
 %exclude %{python2_sitelib}/gluster/__init__*
 
 %changelog
+* Mon Jan 23 2017 Niels de Vos <ndevos@redhat.com> - 1.1-2.1
+- Rebuild with the .spec from Fedora
+
 * Thu Jan 19 2017 Kaleb S. KEITHLEY <kkeithle[at]redhat.com>
 - %__python2, %python2_sitelib, and %license globals for EL6
 
