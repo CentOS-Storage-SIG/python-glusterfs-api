@@ -7,10 +7,12 @@
 
 %global python_package_name gfapi
 
+%{!?python2_sitelib: %global python2_sitelib %(python2 -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
+
 Name:             python-glusterfs-api
 Summary:          Python bindings for GlusterFS libgfapi
 Version:          1.1
-Release:          1%{?dist}
+Release:          2%{?dist}
 License:          GPLv2 or LGPLv3+
 Group:            System Environment/Libraries
 URL:              https://github.com/gluster/libgfapi-python
@@ -29,10 +31,16 @@ See http://libgfapi-python.rtfd.io/ for more details.
 %package -n python2-glusterfs-api
 Summary:          Python2 bindings for GlusterFS libgfapi
 %{?python_provide:%python_provide python2-glusterfs-api}
+%if ( 0%{?rhel} )
 BuildRequires:    python-devel
 BuildRequires:    python-setuptools
-# CentOS 6 does not have __python2
+%if ( 0%{?rhel} < 7 )
 %{!?__python2: %global __python2 /usr/bin/python2}
+%endif
+%else
+BuildRequires:    python2-devel
+BuildRequires:    python2-setuptools
+%endif
 # Requires libgfapi.so
 Requires:         glusterfs-api >= 3.7.0
 # Requires gluster/__init__.py
@@ -50,6 +58,7 @@ Requires:         python-gluster >= 3.7.0
 %{__python2} setup.py install --skip-build --root %{buildroot}
 
 %files -n python2-glusterfs-api
+%{!?_licensedir:%global license %%doc}
 %doc README.rst
 %license COPYING-GPLV2 COPYING-LGPLV3
 %{python2_sitelib}/*
@@ -58,6 +67,12 @@ Requires:         python-gluster >= 3.7.0
 %exclude %{python2_sitelib}/gluster/__init__*
 
 %changelog
+* Thu Jan 19 2017 Kaleb S. KEITHLEY <kkeithle[at]redhat.com>
+- %__python2, %python2_sitelib, and %license globals for EL6
+
+* Thu Jan 19 2017 Kaleb S. KEITHLEY <kkeithle[at]redhat.com> - 1.1-2
+- Initial import plus RHEL feature test for python-devel
+
 * Tue Aug 9 2016 Prashanth Pai <ppai@redhat.com> - 1.1-1
 - Update spec file
 
